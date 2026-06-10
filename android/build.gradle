@@ -6,7 +6,7 @@ buildscript {
 
     dependencies {
         //noinspection AndroidGradlePluginVersion
-        classpath 'com.android.tools.build:gradle:9.0.0'
+        classpath 'com.android.tools.build:gradle:8.13.1'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0'
     }
 }
@@ -21,7 +21,7 @@ apply plugin: qtGradlePluginType
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     //noinspection GradleDependency
-    implementation 'androidx.core:core:1.17.0'
+    implementation 'androidx.core:core:1.16.0'
     implementation 'com.google.android.gms:play-services-ads:23.6.0'
 }
 
@@ -65,7 +65,7 @@ android {
 
     packagingOptions {
         jniLibs {
-            useLegacyPackaging = legacyPackaging
+            useLegacyPackaging = project.hasProperty('legacyPackaging') ? project.property('legacyPackaging').toString().toBoolean() : true
         }
     }
 
