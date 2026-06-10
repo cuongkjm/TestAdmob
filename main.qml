@@ -1,17 +1,14 @@
-import QtQuick 2.9
-import QtQuick.Window 2.2
-import QmlBanner 1.0
-import QmlRewardedVideoAd 1.0
-import QmlInterstitialAd 1.0
-import QtQuick.Controls 1.4
-import QtQuick.Controls.Styles 1.4
+import QtQuick
+import QtQuick.Window
+import QtQuick.Controls
+import AdMob 1.0
 
 Window {
     id: window
     visible: true
-    width: Screen.width
-    height: Screen.height
-    title: qsTr("Hello World")
+    width: 640
+    height: 480
+    title: qsTr("TestAdmob")
 
     Text {
         id: hello_text
@@ -19,28 +16,13 @@ Window {
         anchors.centerIn: parent
     }
 
-    Item {
-        id: screen
-        width: window.width
-        height: window.height
-    }
-
-    QmlBanner
-    {
+    QmlBanner {
         id: banner_ad
-
-        //This is test ad, more information:
-        //https://developers.google.com/admob/android/test-ads
         unitId: "ca-app-pub-3940256099942544/6300978111"
-
         bannerSize: QmlBanner.LARGE_BANNER
-
-        //This ad will be in the bottom
-        x: (window.width - width) * Screen.devicePixelRatio / 2
-        y: (window.height - height) * Screen.devicePixelRatio
-
+        x: (window.width - width) / 2
+        y: window.height - height
         visible: true
-
         testDeviceId: "41E647017EBEBB0650DAE627391B7A43"
 
         onBannerClosed: {}
@@ -50,14 +32,9 @@ Window {
         onBannerOpened: {}
     }
 
-    QmlInterstitialAd
-    {
+    QmlInterstitialAd {
         id: interstitial_ad
-
-        //This is test ad, more information:
-        //https://developers.google.com/admob/android/test-ads
         unitId: "ca-app-pub-3940256099942544/1033173712"
-
         testDeviceId: "41E647017EBEBB0650DAE627391B7A43"
 
         onInterstitialAdClosed: {
@@ -73,36 +50,24 @@ Window {
         onInterstitialAdOpened: {}
     }
 
-    Button
-    {
+    Button {
         id: interstitial_ad_button
-        width: screen.width/3
-        anchors.left: screen.left
-        style: ButtonStyle
-        {
-            label: Text {
-                width: interstitial_ad_button.width
-                text: "show interstitial ad"
-            }
-        }
+        width: parent.width / 3
+        anchors.left: parent.left
+        text: qsTr("show interstitial ad")
         onClicked: interstitial_ad.showInterstitialAd()
     }
 
     Text {
         id: interstitial_ad_status
-        width: screen.width/3
+        width: parent.width / 3
         anchors.top: interstitial_ad_button.bottom
-        anchors.left: screen.left
+        anchors.left: parent.left
     }
 
-    QmlRewardedVideoAd
-    {
+    QmlRewardedVideoAd {
         id: video_ad
-
-        //This is test ad, more information:
-        //https://developers.google.com/admob/android/test-ads
         unitId: "ca-app-pub-3940256099942544/5224354917"
-
         testDeviceId: "41E647017EBEBB0650DAE627391B7A43"
 
         onRewarded: {}
@@ -121,30 +86,22 @@ Window {
         onRewardedVideoStarted: {}
     }
 
-    Button
-    {
+    Button {
         id: video_ad_button
-        width: screen.width/3
-        anchors.right: screen.right
-        style: ButtonStyle
-        {
-            label: Text {
-                width: video_ad_button.width
-                text: "show video ad"
-            }
-        }
+        width: parent.width / 3
+        anchors.right: parent.right
+        text: qsTr("show video ad")
         onClicked: video_ad.show()
     }
 
     Text {
         id: video_ad_status
-        width: screen.width/3
+        width: parent.width / 3
         anchors.top: video_ad_button.bottom
-        anchors.right: screen.right
+        anchors.right: parent.right
     }
 
-    Component.onCompleted:
-    {
+    Component.onCompleted: {
         banner_ad.loadBanner()
         interstitial_ad.loadInterstitialAd()
         video_ad.loadRewardedVideoAd()
