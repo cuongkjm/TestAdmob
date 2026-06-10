@@ -15,6 +15,8 @@ qt_add_executable(TestAdmob
     qml.qrc
 )
 
+set_property(TARGET TestAdmob PROPERTY AUTORCC ON)
+
 target_link_libraries(TestAdmob
     PRIVATE
         Qt6::Core
