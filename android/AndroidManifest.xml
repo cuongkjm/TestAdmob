@@ -29,7 +29,8 @@
             android:exported="true"
             android:label="-- %%INSERT_APP_NAME%% --"
             android:launchMode="singleTop"
-            android:screenOrientation="unspecified">
+            android:screenOrientation="unspecified"
+            android:theme="@style/TestAdmobTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
