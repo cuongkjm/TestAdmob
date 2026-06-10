@@ -49,12 +49,13 @@ TestAdmob is a Qt 6 Quick demonstration app for validating how the `Admob/` libr
 | --- | --- |
 | Qt project format | CMake with `CMakeLists.txt`. |
 | QML imports | Unversioned Qt 6 imports plus `AdMob 1.0`. |
-| Android Gradle plugin | Qt 6.11 template uses `com.android.tools.build:gradle:9.0.0`. |
+| Android Gradle plugin | `com.android.tools.build:gradle:8.13.1` for Qt-generated Gradle wrapper `8.14.2`. |
+| AndroidX core | `androidx.core:core:1.16.0` for Qt kit compile SDK API 35 compatibility. |
 | Google Mobile Ads Android SDK | `com.google.android.gms:play-services-ads:23.6.0`. |
 | Android SDK/NDK | Provided by local `$ANDROID_HOME` and `$ANDROID_NDK_ROOT`. |
 
 ## Current Caveats
 
-- Android validation depends on a configured Qt 6 Android kit, JDK, SDK, and NDK.
+- Android validation passed with a configured Qt 6.10 Android arm64 kit, JDK, SDK, and NDK.
 - Desktop ad methods are no-op behavior from `Admob/`; Android is required for real ad serving.
 - Production forks must replace sample ad IDs privately and keep credentials out of git.

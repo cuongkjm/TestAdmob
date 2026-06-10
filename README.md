@@ -44,9 +44,11 @@ The Android package configuration is under `android/`:
 - App class: `org.qtproject.qt.android.bindings.QtApplication`
 - AdMob metadata: `com.google.android.gms.ads.APPLICATION_ID` with Google sample app id
 - Permissions: `INTERNET`, `ACCESS_NETWORK_STATE`
+- Android Gradle plugin: `com.android.tools.build:gradle:8.13.1`
+- AndroidX core: `androidx.core:core:1.16.0`
 - Google ads dependency: `com.google.android.gms:play-services-ads:23.6.0`
 
-Android builds need a Qt 6 Android kit, JDK, `$ANDROID_HOME`, and `$ANDROID_NDK_ROOT`. The root CMake target sets `QT_ANDROID_PACKAGE_SOURCE_DIR` to `android/`, then `qtadmob_configure_android_target(TestAdmob)` merges `Admob/Platform/Android` Java and proguard files.
+Android builds need a Qt 6 Android kit, JDK, `$ANDROID_HOME`, and `$ANDROID_NDK_ROOT`. The validated Qt 6.10 Android arm64 build creates `build/android-arm64/android-build/build/outputs/apk/debug/android-build-debug.apk`. The root CMake target sets `QT_ANDROID_PACKAGE_SOURCE_DIR` to `android/`, then `qtadmob_configure_android_target(TestAdmob)` merges `Admob/Platform/Android` Java and proguard files.
 
 ## Documentation
 

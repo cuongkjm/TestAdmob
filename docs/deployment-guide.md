@@ -33,7 +33,10 @@ If a GUI/display environment is available, run the built `TestAdmob` executable 
 | Application | `org.qtproject.qt.android.bindings.QtApplication` |
 | Package | `org.qtproject.example` |
 | Repositories | `google()`, `mavenCentral()` |
+| Android Gradle plugin | `com.android.tools.build:gradle:8.13.1` |
+| AndroidX core | `androidx.core:core:1.16.0` |
 | Ads SDK | `com.google.android.gms:play-services-ads:23.6.0` |
+| Native library packaging | `useLegacyPackaging` falls back to `true` when Qt does not expose `legacyPackaging`. |
 | Permissions | `INTERNET`, `ACCESS_NETWORK_STATE` |
 | AdMob app metadata | `com.google.android.gms.ads.APPLICATION_ID` with Google sample app id |
 
@@ -42,7 +45,7 @@ If a GUI/display environment is available, run the built `TestAdmob` executable 
 1. Export `$ANDROID_HOME` and `$ANDROID_NDK_ROOT` for the local Android SDK/NDK.
 2. Configure with the Qt Android kit toolchain and host Qt path.
 3. Build the default Android target or `apk` target if exposed by the kit.
-4. Inspect generated manifest/package output.
+4. Confirm the debug APK is created under `build/android-arm64/android-build/build/outputs/apk/debug/android-build-debug.apk`.
 5. Run on a test device and confirm sample ads load with test IDs.
 
 ## Manifest Gates
@@ -74,5 +77,7 @@ The demo uses Google sample ad unit IDs in `main.qml` and Google sample app id m
 | CMake cannot find Qt modules | Qt 6 kit missing `Core`, `Gui`, `Quick`, or `QuickControls2`. | Configure with a complete Qt 6 kit. |
 | QML fails to load | Resource path or import mismatch. | Confirm `qml.qrc` embeds `main.qml` and QML imports `AdMob 1.0`. |
 | Gradle cannot resolve dependencies | Network or Maven repository access issue. | Confirm access to `google()` and `mavenCentral()`. |
+| AGP requires a newer Gradle wrapper | AGP version is too new for Qt-generated wrapper. | Keep AGP aligned with Qt wrapper; validated combination is AGP `8.13.1` with Gradle `8.14.2`. |
+| AndroidX requires newer compile SDK | AndroidX dependency is too new for Qt kit compile SDK. | Keep AndroidX core at `1.16.0` for API 35 kits unless the kit moves to API 36+. |
 | Android configure fails before package build | Missing Qt Android kit, SDK, NDK, or JDK. | Fix prerequisites, then rerun Android configure. |
 | Ads do not show | SDK setup, device, manifest, or test ID issue. | Confirm sample IDs, internet permission, app id metadata, and test device setup. |

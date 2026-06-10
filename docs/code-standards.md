@@ -47,6 +47,7 @@ These standards apply to the root TestAdmob sample. The `Admob/` subdirectory ha
 - Use `com.google.android.gms.ads.APPLICATION_ID` with a Google sample app id in committed demo metadata.
 - Do not commit production AdMob IDs, signing files, keystores, or passwords.
 - Keep permissions minimal; the demo allows `INTERNET` and `ACCESS_NETWORK_STATE`.
+- Keep Android dependencies aligned with the validated set: AGP `8.13.1`, AndroidX core `1.16.0`, Google Mobile Ads `23.6.0`.
 - Document dependency upgrades before changing Android Gradle plugin or Google Mobile Ads versions.
 
 ## Documentation Standards

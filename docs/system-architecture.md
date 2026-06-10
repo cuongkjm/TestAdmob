@@ -48,13 +48,13 @@ main.cpp
 | File | Responsibility |
 | --- | --- |
 | `android/AndroidManifest.xml` | Declares package, Qt 6 app/activity classes, permissions, and AdMob application id metadata. |
-| `android/build.gradle` | Uses Qt Android deployment variables and declares Google Mobile Ads dependency. |
+| `android/build.gradle` | Uses Qt Android deployment variables and declares AGP `8.13.1`, AndroidX core `1.16.0`, and Google Mobile Ads `23.6.0`. |
 | `Admob/Platform/Android/` | Supplies `com.qtadmob` Java bridge sources and `proguard-rules.pro`. |
 
 The root Android package source is merged with `Admob/Platform/Android/` by `qtadmob_configure_android_target(TestAdmob)`. The root keeps app-owned manifest/dependency metadata; the library keeps reusable Java/proguard bridge files.
 
 ## Architecture Caveats
 
-- Android package validation depends on a configured Qt 6 Android kit, JDK, `$ANDROID_HOME`, and `$ANDROID_NDK_ROOT`.
+- Android package validation passed with a configured Qt 6.10 Android arm64 kit, JDK, SDK, and NDK.
 - Desktop platforms compile with no-op ad methods supplied by `Admob/`.
 - The demo uses sample IDs and compact layout; production apps need private IDs and app-specific UX review.

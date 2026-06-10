@@ -43,6 +43,8 @@ Generated from the current checkout using visible source, Android, and `Admob/` 
 | Application class | `org.qtproject.qt.android.bindings.QtApplication` |
 | Permissions | `INTERNET`, `ACCESS_NETWORK_STATE` |
 | Google metadata | `com.google.android.gms.ads.APPLICATION_ID` with Google sample app id |
+| Android Gradle plugin | `com.android.tools.build:gradle:8.13.1` |
+| AndroidX core | `androidx.core:core:1.16.0` |
 | Ads dependency | `com.google.android.gms:play-services-ads:23.6.0` |
 
 ## Ad Format Matrix
@@ -56,5 +58,5 @@ Generated from the current checkout using visible source, Android, and `Admob/` 
 ## Notable Caveats
 
 - `TestAdmob.pro.user` is local Qt Creator state and should not be treated as source-of-truth documentation.
-- Android package validation depends on a local Qt 6 Android kit plus `$ANDROID_HOME` and `$ANDROID_NDK_ROOT`.
+- Android package validation passed with a local Qt 6.10 Android arm64 kit, SDK, NDK, and JDK.
 - Production forks must replace sample ad ids privately and never commit signing credentials.
