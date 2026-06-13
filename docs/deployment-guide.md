@@ -58,9 +58,27 @@ Generated Android package output should meet these gates:
 - Does not contain `WRITE_EXTERNAL_STORAGE`.
 - Includes merged `com.qtadmob` Java/proguard content from `Admob/Platform/Android/`.
 
+## iOS Configuration
+
+| Setting | Value |
+| --- | --- |
+| Google Mobile Ads SDK root | Required through `-DGOOGLE_MOBILE_ADS_IOS_ROOT=/path/to/GoogleMobileAdsSdkiOS` or a direct `GoogleMobileAds.xcframework` path. |
+| CMake generator | `qtadmob_configure_ios_target(TestAdmob)` applies app plist settings only for iOS Xcode builds. |
+| App id source | Root `CMakeLists.txt` sets `QTADMOB_IOS_APPLICATION_ID` to Google sample app id `ca-app-pub-3940256099942544~1458002511`. |
+| Info.plist handling | `Admob/Platform/Ios/Info.plist` is configured into the build tree and writes `GADApplicationIdentifier` from `QTADMOB_IOS_APPLICATION_ID`. |
+| Link settings | The AdMob library adds `-ObjC`, `GoogleMobileAds`, and `JavaScriptCore` for iOS. |
+
+## iOS Build Outline
+
+1. Install the Google Mobile Ads iOS SDK, validated with SDK `13.5.0` in the submodule docs.
+2. Configure an iOS Xcode build with the Qt iOS kit and pass `GOOGLE_MOBILE_ADS_IOS_ROOT` explicitly.
+3. In Qt Creator, add `GOOGLE_MOBILE_ADS_IOS_ROOT=/path/to/GoogleMobileAdsSdkiOS` under the kit build CMake configuration before configuring the project.
+4. Keep the generated `GADApplicationIdentifier` sample app id for public validation builds.
+5. Run on an iOS simulator or device and confirm the iOS sample ad units load.
+
 ## Ad Configuration
 
-The demo uses Google sample ad unit IDs in `main.qml` and Google sample app id metadata in `android/AndroidManifest.xml`. Keep sample IDs for public builds and documentation. For production forks, replace IDs only in private application code and verify app-level AdMob metadata requirements with current Google Mobile Ads documentation.
+The demo uses Google sample ad unit IDs in `main.qml`, with Android and iOS values selected by `Qt.platform.os`. iOS sample units are banner `ca-app-pub-3940256099942544/2934735716`, interstitial `ca-app-pub-3940256099942544/4411468910`, and rewarded `ca-app-pub-3940256099942544/1712485313`. Android app metadata remains in `android/AndroidManifest.xml`; iOS app id metadata is generated into the iOS app plist. Keep sample IDs for public builds and documentation. For production forks, replace IDs only in private application code and verify app-level AdMob metadata requirements with current Google Mobile Ads documentation.
 
 ## Release Safety Checklist
 
