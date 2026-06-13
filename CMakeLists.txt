@@ -32,6 +32,7 @@ endif()
 
 if(IOS)
     set(QT_NO_SET_DEFAULT_IOS_LAUNCH_SCREEN ON)
+    set(QTADMOB_IOS_APPLICATION_ID "ca-app-pub-3940256099942544~1458002511")
 endif()
 
 qtadmob_configure_android_target(TestAdmob)

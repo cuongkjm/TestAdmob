@@ -42,6 +42,7 @@ Window {
         }
         onInterstitialAdFailedToLoad: {
             interstitial_ad_status.text = "interstitial ad failed to load error code = " + errorCode
+            console.log("interstitial ad failed to load error code = " + errorCode)
         }
         onInterstitialAdLeftApplication: {}
         onInterstitialAdLoaded: {
@@ -76,6 +77,7 @@ Window {
         }
         onRewardedVideoAdFailedToLoad: {
             video_ad_status.text = "video ad failed to load error code = " + errorCode
+            console.log("video ad failed to load error code = " + errorCode)
         }
         onRewardedVideoAdLeftApplication: {}
         onRewardedVideoAdLoaded: {
