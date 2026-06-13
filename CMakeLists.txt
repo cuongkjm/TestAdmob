@@ -30,6 +30,11 @@ if(ANDROID)
     set_property(TARGET TestAdmob PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
 endif()
 
+if(IOS)
+    set(QT_NO_SET_DEFAULT_IOS_LAUNCH_SCREEN ON)
+endif()
+
 qtadmob_configure_android_target(TestAdmob)
+qtadmob_configure_ios_target(TestAdmob)
 
 qt_finalize_executable(TestAdmob)
