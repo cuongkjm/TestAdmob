@@ -25,6 +25,7 @@ The app registers QML ad types in C++, loads `main.qml` from `qml.qrc`, and show
 - Loads banner, interstitial, and rewarded ads on `Component.onCompleted`.
 - Uses Google sample ad unit IDs from the official test ads documentation.
 - Uses one hard-coded `testDeviceId` for all ad formats.
+- Uses `SafeArea.margins` in QML so Android target SDK 36 edge-to-edge enforcement does not place controls or the banner under system bars.
 - Updates status text when interstitial and rewarded video callbacks fire.
 
 ## Desktop Build

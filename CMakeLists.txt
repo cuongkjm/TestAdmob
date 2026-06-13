@@ -4,7 +4,7 @@ project(TestAdmob VERSION 1.0 LANGUAGES CXX)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick QuickControls2)
 
-qt_standard_project_setup(REQUIRES 6.2)
+qt_standard_project_setup(REQUIRES 6.9)
 qt_policy(SET QTP0002 NEW)
 
 add_subdirectory(Admob)

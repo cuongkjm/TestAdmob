@@ -39,6 +39,7 @@ If a GUI/display environment is available, run the built `TestAdmob` executable 
 | Native library packaging | `useLegacyPackaging` falls back to `true` when Qt does not expose `legacyPackaging`. |
 | Permissions | `INTERNET`, `ACCESS_NETWORK_STATE` |
 | AdMob app metadata | `com.google.android.gms.ads.APPLICATION_ID` with Google sample app id |
+| Target SDK | Android APK is built with `qtTargetSdkVersion=36`. |
 
 ## Android Build Outline
 

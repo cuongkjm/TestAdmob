@@ -50,18 +50,31 @@ Window {
         }
     }
 
+    Item {
+        id: safe_area_probe
+        anchors.fill: parent
+    }
+
+    Item {
+        id: content_area
+        x: safe_area_probe.SafeArea.margins.left
+        y: safe_area_probe.SafeArea.margins.top
+        width: window.width - safe_area_probe.SafeArea.margins.left - safe_area_probe.SafeArea.margins.right
+        height: window.height - safe_area_probe.SafeArea.margins.top - safe_area_probe.SafeArea.margins.bottom
+    }
+
     Text {
         id: hello_text
         text: qsTr("Hello World")
-        anchors.centerIn: parent
+        anchors.centerIn: content_area
     }
 
     QmlBanner {
         id: banner_ad
         unitId: window.bannerAdUnitId
         bannerSize: QmlBanner.BANNER
-        x: (window.width - width) / 2
-        y: window.height - height
+        x: content_area.x + (content_area.width - width) / 2
+        y: content_area.y + content_area.height - height
         visible: true
         testDeviceId: "41E647017EBEBB0650DAE627391B7A43"
 
@@ -97,8 +110,9 @@ Window {
 
     Button {
         id: interstitial_ad_button
-        width: parent.width / 3
-        anchors.left: parent.left
+        width: content_area.width / 3
+        anchors.left: content_area.left
+        anchors.top: content_area.top
         enabled: false
         text: qsTr("show interstitial ad")
         onClicked: {
@@ -109,9 +123,9 @@ Window {
 
     Text {
         id: interstitial_ad_status
-        width: parent.width / 3
+        width: content_area.width / 3
         anchors.top: interstitial_ad_button.bottom
-        anchors.left: parent.left
+        anchors.left: content_area.left
     }
 
     QmlRewardedVideoAd {
@@ -140,8 +154,9 @@ Window {
 
     Button {
         id: video_ad_button
-        width: parent.width / 3
-        anchors.right: parent.right
+        width: content_area.width / 3
+        anchors.right: content_area.right
+        anchors.top: content_area.top
         enabled: false
         text: qsTr("show video ad")
         onClicked: {
@@ -152,9 +167,9 @@ Window {
 
     Text {
         id: video_ad_status
-        width: parent.width / 3
+        width: content_area.width / 3
         anchors.top: video_ad_button.bottom
-        anchors.right: parent.right
+        anchors.right: content_area.right
     }
 
     Component.onCompleted: {
